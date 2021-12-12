@@ -1,0 +1,6 @@
+# to build the project and serve it on port 3000
+docker-compose up -d
+
+# to run test, while project is running
+docker exec -it frontend-web-1 npm run test
+
