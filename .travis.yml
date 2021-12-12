@@ -1,5 +1,7 @@
 language: generic
-sudo: required
+os: linux
+# dist will be Ubuntu 18.04 LTS Bionic Beaver
+dist: bionic
 services:
   - docker
 
@@ -8,3 +10,17 @@ before_install:
 
 script:
   - docker run -e CI=true jonshallow/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-480904668392"
+  bucket_path: "docker-react"
+  access_key_id:
+    secure: "Encrypted $AWS_ACCESS_KEY="
+  secret_access_key:
+    secure: "Encrypted $AWS_SECRET_KEY="
+  on:
+    branch: main
