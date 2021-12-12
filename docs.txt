@@ -4,3 +4,13 @@ docker-compose up -d
 # to run test, while project is running
 docker exec -it frontend-web-1 npm run test
 
+Travis CI - watch anytime changes are pushed to github, anytime new code is pushed github informs travis,
+travis will automatically pull the new code and test/deploy/etc. Travis needs a .travis.yml config file.
+Primary purpose of Travis is run our test suite...
+https://docs.travis-ci.com/
+
+.travis.yml config:
+- tell travis we need a copy of docker running
+- build the image using Dockerfile.dev
+- tell travis how to run our test suite
+- tell travis how to deploy our code to AWS
