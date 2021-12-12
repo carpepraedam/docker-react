@@ -14,6 +14,7 @@ RUN npm run build
 # Once we see a second FROM block here, we know the previous
 # phase is complete
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # DO NOT NEED start/run NGINX, that is the default command. If there is no RUN statement the container will use the
 # default image command
